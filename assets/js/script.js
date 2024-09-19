@@ -15,14 +15,14 @@ class ControlDeGastos { //Clase ControlDeGastos, encargada de toda la gestion de
         if (this.validarGasto(gasto)) {
 
             if (gasto.valor > 150) {
-                alert("Advertencia ¡Controla tus gastos!: ¡El monto registrado es mayor a $150!");
+                this.mostrarAlerta("Advertencia ¡Controla tus gastos!: ¡El monto registrado es mayor a $150!");
             }
 
             this.gastos.push(gasto);
             this.actualizarVista();
 
         } else {
-            this.mostrarError("El nombre del gasto no puede estar vacío y el valor debe ser mayor a 0");
+            this.mostrarAlerta("El nombre del gasto no puede estar vacío y el valor debe ser mayor a 0");
         }
     }
 
@@ -43,14 +43,14 @@ class ControlDeGastos { //Clase ControlDeGastos, encargada de toda la gestion de
         if (this.validarGasto(gastoModificado)) {
 
             if (gastoModificado.valor > 150) {
-                alert("¡Controla tus gastos!: ¡El monto registrado es mayor a $150!");
+                this.mostrarAlerta("¡Controla tus gastos!: ¡El monto registrado es mayor a $150!");
             }
 
             this.gastos[indice] = gastoModificado;
             this.actualizarVista();
 
         } else {
-            this.mostrarError("El nombre del gasto no puede estar vacío y el valor debe ser mayor a 0");
+            this.mostrarAlerta("El nombre del gasto no puede estar vacío y el valor debe ser mayor a 0");
         }
     }
 
@@ -70,9 +70,16 @@ class ControlDeGastos { //Clase ControlDeGastos, encargada de toda la gestion de
         actualizarTotalGastos(this.calcularTotal());
     }
 
-    mostrarError(mensaje) {
-        alert(mensaje);
+    mostrarAlerta(mensaje, tipo) {// Funcion para mostrar alertas
+        const alerta = document.getElementById("alerta");
+        alerta.textContent = mensaje;
+        alerta.className = `alerta ${tipo}`; 
+        alerta.style.display = "block";
+        setTimeout(() => {
+            alerta.style.display = "none";
+        }, 4000); 
     }
+
 }
 
 function actualizarListaDeGastos(gastos) {

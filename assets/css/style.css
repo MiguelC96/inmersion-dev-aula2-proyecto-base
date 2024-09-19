@@ -112,3 +112,21 @@ ul li:last-child {
     color: #fff;
 
 }
+
+.alerta {
+    padding: 15px;
+    margin: 10px 0;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: #fff;
+    background-color: #f44336; /* Rojo */
+    display: none;
+}
+
+.alerta.success {
+    background-color: #4CAF50; /* Verde */
+}
+
+.alerta.warning {
+    background-color: #ff9800; /* Naranja */
+}
